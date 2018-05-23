@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Student Name</th>
+        <th>user Name</th>
+        <th>dob</th>
+        <th>email</th>
+        <th>mobileNo</th>
+        <th>acadmeicDetails</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{student.userId}}</td>
+        <td>{{student.studentName}}</td>
+        <td>{{student.userName}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.email | lowercase}}</td>
+        <td>{{student.phoneNo }}</td>
+        <td>{{student.academicDetails}}</td>
+        
+        <td>
+            <button class="btn btn-default">
+                <a [routerLink]="'/studentedit/'+student.userId">Update</a>
+            </button>
+           </td>
+           <td>
+            <button class="btn btn-danger btn-sm"
+              (click)="deleteStudent(student.userId)" >
+              Delete
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+

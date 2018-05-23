@@ -1,0 +1,207 @@
+
+        <div class="row">
+          <div class="col-lg-12">
+              <div class="card ">
+                  <div class="card-header bg-info">
+                      <h1 class="m-b-0 text-white">Add New Student</h1>
+                  </div>
+                    <form #studentForm="ngForm"  [formGroup]="form"  (ngSubmit)="createAccount()" class="form-horizontal">
+                        <div formGroupName="personalInformation" class="form-body">
+                              <h3 class="box-title">Personal Information</h3>
+                              <hr class="m-t-0 m-b-40"/>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Student Name </label>
+                                          <div class="col-md-9">
+                                              <input formControlName="studentName" type="text"  class="form-control" placeholder="Full Name" >
+                                            </div>
+                                      </div>
+                                  </div>
+                                  <!--/span-->
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">User Name</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="userName" type="text"   class="form-control" placeholder="UserName">
+                                            <!-- {{userName}} -->
+                                            <!-- <div *ngIf="userName.errors.required">Usename required</div> -->
+                                            </div>
+                                      </div>
+                                  </div>
+                      
+                              </div>
+
+                              <div class="row">
+                                  <!--/span-->
+                                  <div class="col-md-6">
+
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Gender</label>
+                                          <div class="col-md-9">
+                                              <select formControlName="gender" class="form-control custom-select">
+                                                  <option  *ngFor="let gender of genders"  value="{{gender.id}}">{{gender.type}}</option>
+                                              </select>
+                                            </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Date of Birth</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="dob" type="date"  class="form-control" placeholder="dd/mm/yyyy" />
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Father's Name</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="fatherName" type="text"  class="form-control" placeholder=""/>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                              <!--/row-->
+                              
+                           <div formGroupName="contactInformation">   
+                              <h3 class="box-title">Contact Information</h3>
+                              <hr class="m-t-0 m-b-40"/>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Email</label>
+                                            <div class="col-md-9">
+                                                <div class="inner-addon right-addon">
+                                                        <input formControlName="email" type="text"  class="form-control" placeholder="ashmeet@javatar.com"/>
+                                                        <span *ngIf="email.pending" class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
+                                                        </span>
+                                                        <div *ngIf="email.pending" class="alert alert-info">
+                                                            Checking Validity for {{email.value}}
+                                                        </div>
+                                                        <div *ngIf="email.invalid && email.errors.emailShouldBeUnique" class="alert alert-danger">
+                                                            Email should be uniue
+                                                        </div>
+                                                        <div *ngIf="email.valid" class="alert alert-success">
+                                                            Available
+                                                </div>
+                                            </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Mobile Number</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="mobileNo" type="tel"  class="form-control" placeholder="98XXXXXXXX"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Phone Number</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="phoneNo" type="tel"  class="form-control" placeholder="98XXXXXXXX"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                           <div formGroupName="academicInformation">   
+                              <h3 class="box-title">Academic Information</h3>
+                              <hr class="m-t-0 m-b-40"/>
+                              <div class="row">
+
+                                  <!--/span-->
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                        <!-- course code -->
+                                          <label class="control-label text-right col-md-3">course code</label>
+                                          <div class="col-md-9">
+                                              <select formControlName="courseCode" class="form-control custom-select">
+                                                  <option value="101">Java</option>
+                                                  <option value="102">C++</option>
+                                                  <option value="103">Angular JS</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <!--/span-->
+                                  <!--/span-->
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Academic Details </label>
+                                          <div class="col-md-9">
+                                              <input formControlName="academicDetails" type="text"  class="form-control" placeholder="98XXXXXXXX"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                           <div formGroupName="address">   
+                              <h3 class="box-title">Address</h3>
+                              <hr class="m-t-0 m-b-40"/>
+                              <!--/row-->
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Street Name</label>
+                                          <div class="col-md-9">
+                                              <textarea formControlName="streetName" class="form-control"  placeholder="Pokhara-Lekhnath 30"></textarea>
+                                          </div>
+                                      </div>
+
+                                  </div>
+
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Municipality</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="municipality" type="text"  class="form-control"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!--/span-->
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">Zone</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="zone" type="text"  class="form-control"/>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!--/span-->
+
+                                  <div class="col-md-6">
+                                      <div class="form-group row">
+                                          <label class="control-label text-right col-md-3">District</label>
+                                          <div class="col-md-9">
+                                              <input formControlName="district" type="text" class="form-control"/>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                              </div>
+                              <!--/row-->
+                            </div>
+                          
+                          <hr/>
+                          <div class="form-actions">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="row">
+                                          <div class="col-md-offset-3 col-md-9">
+                                            <!-- [disabled]="!studentForm.valid" -->
+                                              <button  [disabled]="!studentForm.valid" type="submit" class="btn btn-success">Add Client</button>
+                                              <button (click)="reset()" type="reset" class="btn btn-inverse">Reset</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+      </div>
